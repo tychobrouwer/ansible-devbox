@@ -17,6 +17,14 @@
     group: root
     mode: "0644"
 
+- name: Ensure VSCode Server directory exists
+  ansible.builtin.file:
+    path: /opt/vscode-server
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
 - name: Download VSCode Server tarball
   ansible.builtin.unarchive:
     src: /root/vscode-server.tar.gz

@@ -14,9 +14,14 @@ Example Playbook
 ```yaml
 - hosts: servers
   vars:
+    devbox_user: dev
+    vscode_enabled: true
 
   roles:
       - role: tychobrouwer.devbox
+
+      - role: tychobrouwer.devbox
+        vscode_arch: amd64
 ```
 
 License

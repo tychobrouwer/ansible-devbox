@@ -5,8 +5,7 @@ After=nginx.service
 [Service]
 User=code
 WorkingDirectory=/home/{{ devbox_user }}
-Environment=PASSWORD={{ vscode_password }}
-ExecStart=/home/code/bin/code-server --host 127.0.0.1 --user-data-dir /home/{{ devbox_user }}/.local/share/code-server --extensions-dir /home/{{ devbox_user }}/.local/share/code-server/extensions --auth password --port {{ vscode_port }} --disable-telemetry /home/{{ devbox_user }}
+ExecStart=/opt/vscode-server/bin/code-server --host 127.0.0.1 --disable-telemetry /home/{{ devbox_user }}
 Restart=always
 
 [Install]
