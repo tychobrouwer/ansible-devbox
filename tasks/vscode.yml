@@ -9,7 +9,7 @@
   ansible.builtin.set_fact:
     linux_download_url: "{{ (vscode_latest.json.assets | selectattr('browser_download_url', 'search', 'linux-' + vscode_arch) | list | first).browser_download_url | default('') }}"
 
-- name: Download Readarr archive
+- name: Download VSCode Server archive
   ansible.builtin.get_url:
     url: "{{ linux_download_url }}"
     dest: /root/vscode-server.tar.gz
@@ -20,7 +20,8 @@
 - name: Download VSCode Server tarball
   ansible.builtin.unarchive:
     src: /root/vscode-server.tar.gz
-    dest: /opt
+    dest: /opt/vscode-server
+    extra_opts: [--strip-components=1]
     remote_src: true
 
 - name: Ensure VSCode Server binary is executable
@@ -31,7 +32,7 @@
     owner: root
     group: root
 
-- name: Ensure vscode service file is on remote
+- name: Ensure VSCode Server service file is on remote
   ansible.builtin.template:
     src: vscode.service.j2
     dest: /etc/systemd/system/vscode.service
@@ -40,7 +41,7 @@
     group: root
   notify: restart vscode
 
-- name: Ensure vscode service is enabled and started
+- name: Ensure VSCode Server service is enabled and started
   ansible.builtin.systemd:
     name: vscode
     state: started
