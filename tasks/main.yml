@@ -1,0 +1,5 @@
+---
+# tasks file for ansible-devbox
+- name: Install VSCode Server
+  ansible.builtin.include_tasks: vscode.yml
+  when: vscode_enabled
