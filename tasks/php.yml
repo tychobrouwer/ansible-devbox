@@ -1,0 +1,8 @@
+---
+- name: Install requirements for Laravel development
+  ansible.builtin.package:
+    name:
+      - php-common
+      - composer
+    state: present
+  become: true

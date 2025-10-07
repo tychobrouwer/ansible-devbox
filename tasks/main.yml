@@ -3,3 +3,7 @@
 - name: Install VSCode Server
   ansible.builtin.include_tasks: vscode.yml
   when: vscode_enabled
+
+- name: Install php
+  ansible.builtin.include_tasks: php.yml
+  when: php_enabled

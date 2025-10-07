@@ -3,7 +3,7 @@ Description=code-server
 After=nginx.service
 
 [Service]
-User=code
+User={{ devbox_user }}
 WorkingDirectory=/home/{{ devbox_user }}
 ExecStart=/opt/vscode-server/bin/code-server --host 127.0.0.1 --disable-telemetry /home/{{ devbox_user }}
 Restart=always

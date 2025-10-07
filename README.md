@@ -16,6 +16,7 @@ Example Playbook
   vars:
     devbox_user: dev
     vscode_enabled: true
+    php_enabled: true
 
   roles:
       - role: tychobrouwer.devbox
